@@ -21,11 +21,11 @@ title_separator          : "-"
 subtitle                 : "Go for IT" # site tagline that appears below site title in masthead
 name                     : "Taeyoung Kim(RaccoonCode)"
 description              : "Go for IT! 라쿤코드의 TIL blog 입니다."
-url                      : "https://raccooncode96.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://raccooncode96.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "RaccoonCode96/RaccoonCode96.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/img/너구리600.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
-logo                     :  # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
+logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : "라쿤코드의 개발 블로그" # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
