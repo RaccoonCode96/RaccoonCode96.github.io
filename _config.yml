@@ -24,7 +24,7 @@ description              : "Go for IT! 라쿤코드의 TIL blog 입니다."
 url                      : "https://raccooncode96.github.io/" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "RaccoonCode96/RaccoonCode96.github.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
-teaser                   : "/assets/img/너구리600.jpg" # path of fallback teaser image, e.g. "/assets/images/500x300.png"
+teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 logo                     : # path of logo image to display in the masthead, e.g. "/assets/images/88x88.png"
 masthead_title           : "라쿤코드의 개발 블로그" # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Taeyoung Kim(RaccoonCode96)"
-  avatar           :  # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/img/너구리600.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Go for IT! Raccooncode's TIL blog."
   location         : "somewhere"
   email            :
@@ -102,7 +102,7 @@ author:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
-    - label: "Website"
+    - label: "https://goforit.tistory.com/"
       icon: "fas fa-fw fa-link"
        #url: "https://goforit.tistory.com/"
     - label: "Twitter"
