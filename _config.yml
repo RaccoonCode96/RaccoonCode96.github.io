@@ -94,15 +94,15 @@ analytics:
 # Site Author
 author:
   name             : "Taeyoung Kim(RaccoonCode96)"
-  avatar           : "/assets/img/너구리600.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/img/너구리.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Go for IT! Raccooncode's TIL blog."
-  location         : "somewhere"
+  location         : "S.Korea"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
-    - label: "https://goforit.tistory.com/"
+    - label: "Website"
       icon: "fas fa-fw fa-link"
        #url: "https://goforit.tistory.com/"
     - label: "Twitter"
