@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Taeyoung Kim(RaccoonCode96)"
-  avatar           : "/assets/img/너구리.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           :  # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Go for IT! Raccooncode's TIL blog."
   location         : "S.Korea"
   email            :
