@@ -1,5 +1,5 @@
 ---
-title : "20210218_JavaScript09 Nomardcoder, DOM, Element, Event " #제목
+title : "20210219_JavaScript09 Nomardcoder, DOM, Element, Event " #제목
 category : #카테고리
     - JavaScript
 tag : #태그
