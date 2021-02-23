@@ -1,12 +1,15 @@
 ---
-title : "20210222_JavaScript10 Nomadcoder " #제목
-category : #카테고리
+title : "20210222_JavaScript10 Nomadcoder-ToDoList project, 사용자 인식, 시계, todolist, 배경 기능 구현" #제목
+category : #카테고리 
     - JavaScript
 tag : #태그
     - JavaScript
-    - DOM
-    - Event
-    - Element
+    - Nomadcoder
+    - project
+    - ToDoList
+    - 사용자 인식
+    - 시계
+    - 랜덤배경
    
    
 toc : true #옆에 목차
