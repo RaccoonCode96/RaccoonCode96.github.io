@@ -1,5 +1,5 @@
 ---
-title : "20210224_JavaScript10 Nomadcoder-ToDoList project CSS, js 기능 추가  " #제목
+title : "20210224_JavaScript13 Nomadcoder-ToDoList project CSS, js 기능 추가  " #제목
 category : #카테고리
     - JavaScript
 tag : #태그

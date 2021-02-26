@@ -1,5 +1,5 @@
 ---
-title : "20210222_JavaScript10 Nomadcoder-ToDoList project, 사용자 인식, 시계, todolist, 배경 기능 구현" #제목
+title : "20210222_JavaScript11 Nomadcoder-ToDoList project, 사용자 인식, 시계, todolist, 배경 기능 구현" #제목
 category : #카테고리 
     - JavaScript
 tag : #태그
