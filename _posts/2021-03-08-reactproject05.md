@@ -214,16 +214,12 @@ import { Link } from "react-router-dom";
 function Navigation() {
     return (
       <div>
-        {% raw %}
         <Link to="/">Home</Link>
         <Link to={{
             pathname:"./about",
             state: {
-                fromNavigation: true
-            }
-        }}>About</Link>
-        {% endraw %}
-    </div>
+                fromNavigation: true}}}>About</Link>
+      </div>
     );
 }
 
