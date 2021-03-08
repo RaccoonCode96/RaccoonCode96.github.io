@@ -225,39 +225,7 @@ export default App;
 
 - import  link를 통해서 누르면 detail페이지로 이동 할수 있게 하며, 해당 component의 props를 link의 state에 넣어 보냄
 
-``` js
-import { Link } from 'react-router-dom';
-function Movie({year, rating, title, summary, poster, genres}) {
-    return (
-        <Link to={{
-            pathname:'/movie-detail',
-            state: {
-                rating,
-                title,
-                year,
-                summary,
-                poster,
-                genres
-            }
-        }}>
-        <div className="movie">
-            <div className="page">
-                <img src={poster} alt={title} title={title}/>
-                <div className="movie__data">
-                    <h3 className="movie__title">{title.slice(0, 30)}</h3>
-                    {/* <ul className="genres">{genres.map((genre, index) => (
-                        <li key={index} className="genres__genre">{genre}</li> 
-                    ))}</ul> */}
-                    <h5 className="movie__genres">{genres.join(", ")}</h5>
-                    <h5 className="movie__rating">{rating}/10</h5>
-                    <p className="movie__summary">{summary.slice(0, 220)}...</p>
-                </div>
-            </div>
-        </div>
-        </Link>
-    );
-}
-```
+<img src="./../assets/img/error_code02.png">
 
 <br>
 <br>
