@@ -207,27 +207,7 @@ export default App;
 
 - 이러한 props를 이용해서 home의 정보들을 보낼수 있음 (버튼 클릭시 정보를 보냄)
 
-```js
-import React from "react";
-import { Link } from "react-router-dom";
-
-function Navigation() {
-    return (
-      <div>
-        <Link to="/">Home</Link>
-        <Link to=
-          {
-          pathname:"./about",
-          state: {fromNavigation: true}
-          }
-        >About</Link>
-      </div>
-    );
-}
-
-export default Navigation;
-
-```
+<img src="./../assets/img/error_code.png">
 
 - 위처럼 `Link`를 사용하고 prop의 state를 통해 정보를 넣고 다른 페이지에 연결하여 전달 가능
 
