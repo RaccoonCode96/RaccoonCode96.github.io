@@ -179,6 +179,7 @@ export default Navigation;
 - 물론, 모든 것을 router 태그 안에 넣을 필요는 없지만 Link 사용시엔 넣어야함
 
 ``` js
+{% raw %}
 import React from 'react';
 import { HashRouter, Route } from "react-router-dom";
 import About from "./routes/About";
@@ -196,7 +197,7 @@ function App(){
 }
 
 export default App;
-
+{% endraw %}
 ```
 
 - 보기에는 BrowserRouter가 좋지만 github pages에서는 HashRouter가 업로드하기 편하다고 한다.
