@@ -226,6 +226,7 @@ export default App;
 - import  link를 통해서 누르면 detail페이지로 이동 할수 있게 하며, 해당 component의 props를 link의 state에 넣어 보냄
 
 ``` js
+import { Link } from 'react-router-dom';
 function Movie({year, rating, title, summary, poster, genres}) {
     return (
         <Link to={{
