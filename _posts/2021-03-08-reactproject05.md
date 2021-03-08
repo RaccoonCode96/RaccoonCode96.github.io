@@ -218,10 +218,8 @@ function Navigation() {
         <Link to={
           {
           pathname:"./about",
-          state: {
-            fromNavigation: true
+          state: {fromNavigation: true}
           }
-        }
         }>About</Link>
       </div>
     );
