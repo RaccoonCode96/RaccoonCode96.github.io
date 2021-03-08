@@ -216,9 +216,11 @@ function Navigation() {
       <div>
         <Link to="/">Home</Link>
         <Link to={{
-            pathname:"./about",
-            state: {
-                fromNavigation: true}}}>About</Link>
+          pathname:"./about",
+          state: {
+            fromNavigation: true
+          }
+        }}>About</Link>
       </div>
     );
 }
