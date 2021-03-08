@@ -179,7 +179,6 @@ export default Navigation;
 - 물론, 모든 것을 router 태그 안에 넣을 필요는 없지만 Link 사용시엔 넣어야함
 
 ``` js
-{% raw %}
 import React from 'react';
 import { HashRouter, Route } from "react-router-dom";
 import About from "./routes/About";
@@ -197,7 +196,6 @@ function App(){
 }
 
 export default App;
-{% endraw %}
 ```
 
 - 보기에는 BrowserRouter가 좋지만 github pages에서는 HashRouter가 업로드하기 편하다고 한다.
@@ -210,6 +208,7 @@ export default App;
 - 이러한 props를 이용해서 home의 정보들을 보낼수 있음 (버튼 클릭시 정보를 보냄)
 
 ```js
+{% raw %}
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -228,6 +227,7 @@ function Navigation() {
 }
 
 export default Navigation;
+{% endraw %}
 ```
 
 - 위처럼 `Link`를 사용하고 prop의 state를 통해 정보를 넣고 다른 페이지에 연결하여 전달 가능
