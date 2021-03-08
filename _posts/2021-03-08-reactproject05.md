@@ -215,12 +215,12 @@ function Navigation() {
     return (
       <div>
         <Link to="/">Home</Link>
-        <Link to={
+        <Link to=
           {
           pathname:"./about",
           state: {fromNavigation: true}
           }
-        }>About</Link>
+        >About</Link>
       </div>
     );
 }
