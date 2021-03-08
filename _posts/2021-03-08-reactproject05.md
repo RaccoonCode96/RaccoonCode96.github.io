@@ -208,13 +208,13 @@ export default App;
 - 이러한 props를 이용해서 home의 정보들을 보낼수 있음 (버튼 클릭시 정보를 보냄)
 
 ```js
-{% raw %}
 import React from "react";
 import { Link } from "react-router-dom";
 
 function Navigation() {
     return (
       <div>
+        {% raw %}
         <Link to="/">Home</Link>
         <Link to={{
             pathname:"./about",
@@ -222,12 +222,13 @@ function Navigation() {
                 fromNavigation: true
             }
         }}>About</Link>
+        {% endraw %}
     </div>
     );
 }
 
 export default Navigation;
-{% endraw %}
+
 ```
 
 - 위처럼 `Link`를 사용하고 prop의 state를 통해 정보를 넣고 다른 페이지에 연결하여 전달 가능
