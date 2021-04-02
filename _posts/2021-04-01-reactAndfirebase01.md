@@ -79,7 +79,7 @@ toc : true #옆에 목차
   - `npx create-react-app appname` -> react frame 만들기
   - React 초기 환경설정 (필요한 것만 남기기)
 
-  <img src="../assets/img/setup_nwitter.gif>
+  <img src="../assets/img/setup_nwitter.gif">
 
 <br>
 
