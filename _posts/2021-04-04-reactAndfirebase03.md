@@ -1,12 +1,17 @@
 ---
-title : "20210404 React and Firebase03 Nomadcoder  " #제목
+title : "20210404 React and Firebase03 계정 생성, 로그인, Auth, createuserwithemailandpassword, setPersistence, onAuthStateChanged,  Nomadcoder  " #제목
 category : #카테고리
 tag : #태그
     - React
     - Firebase
     - 트위터 클론
     - Nomadcoder
-    - 
+    - 계정 생성
+    - 로그인
+    - Auth
+    - createuserwithemailandpassword
+    - setPersistence
+    - onAuthStateChanged
 toc : true #옆에 목차
 ---
 
