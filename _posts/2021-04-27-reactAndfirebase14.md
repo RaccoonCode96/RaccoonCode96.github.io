@@ -1,5 +1,5 @@
 ---
-title: "20210427  instagram 만들기 14(React), Img 태그-OnError 처리, profile update시 글 작성자 표시 반영 구현" #제목
+title: "20210427 instagram 만들기 14(React), Img 태그-OnError 처리, profile update시 글 작성자 표시 반영 구현" #제목
 category: #카테고리
 tag: #태그
   - React
