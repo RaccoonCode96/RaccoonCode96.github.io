@@ -1,5 +1,5 @@
 ---
-title: "20210620 DataStructure 06 : " #제목
+title: "20210620 DataStructure 06 : Tree (트리), Binary Tree(이진 트리), Binary Search Tree(이중 탐색 트리), python으로 이진 탐색 트리 구현" #제목
 category: #카테고리
 tag: #태그
   - DataStructure
@@ -76,6 +76,8 @@ toc: true #옆에 목차
 
 > # Python 링크드 리스트를 활용한 이진 탐색 트리 구현
 
+<br/>
+
 - 좌 우로 pointer를 가지고 있음
 
 ```python
@@ -138,7 +140,13 @@ BST.search(4) # True
 BST.search(-1) # False
 ```
 
+<br/>
+<br/>
+<br/>
+
 ## 이진 탐색 트리 삭제 구현
+
+<br/>
 
 - 삭제의 경우의 수
   - Leaf Node를 삭제하는 경우
@@ -297,6 +305,8 @@ class NodeMgmt:
 
 ## python 전체 코드 테스트
 
+<br/>
+
 - random 라이브러리 활용
   - `radom.randint(startNumber, endNumber)` : star ~ end 사이에 있는 숫자를 랜덤하게 return
 
@@ -332,3 +342,32 @@ for del_num in delete_nums:
   if binary_tree.delete(del_num) == False:
     print('delete failed', del_num)
 ```
+
+<br/>
+<br/>
+<br/>
+
+> # 이진 탐색 트리의 시간 복잡도와 단점
+
+<br/>
+
+## 시간 복잡도
+
+<br/>
+
+- depth (트리 높이)를 h라고 표기 한다면, `O(h)`
+- n개의 노드를 가진 다면, h = log n에 가까우니까 시간복잡도는 `O(log n)`
+  - log의 밑은 2 임
+  - 한번 찾을 때, 50%의 나머지 경우의 명령을 제거 -> 50%의 실행시간을 단축 시킬수 있음
+
+<br/>
+
+## 단점
+
+<br/>
+
+- 트리가 균형이 잡혀 있는 경우 평균 시간 복잡도는 `O(log n)`이지만,
+  - **트리가 균형잡히지 않은 경우 링크드 리스트 등과 동일한 성능인 `O(n)`성능을 보여줌**
+  - root 값이 중간 값에서 멀어 질 수록, 들어가는 값이 연속되어 커지는 경우 -> 트리 불균형
+  - right로 치우치는 경우 : root(1) - (2) - (3) - (4) - ...
+  - left로 치우치는 경우 : root(n) - (n-1) - (n-2) ...
