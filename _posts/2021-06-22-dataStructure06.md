@@ -1,5 +1,5 @@
 ---
-title: "20210620 DataStructure 06 : Tree (트리), Binary Tree(이진 트리), Binary Search Tree(이중 탐색 트리), python으로 이진 탐색 트리 구현" #제목
+title: "20210622 DataStructure 06 : Tree (트리), Binary Tree(이진 트리), Binary Search Tree(이중 탐색 트리), python으로 이진 탐색 트리 구현" #제목
 category: #카테고리
 tag: #태그
   - DataStructure
