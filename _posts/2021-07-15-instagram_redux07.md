@@ -1,12 +1,12 @@
 ---
-title: "20210714 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit06 : 프로필 수정 구현, profile 이미지 url 처리에 관한 문제 발생과 고민" #제목
+title: "20210715 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit07 : profile 이미지 url 삭제에 관한 에러 처리 문제 해결" #제목
 category: #카테고리
 tag: #태그
   - project
 toc: true #옆에 목차
 ---
 
-> # 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit06
+> # 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit07
 
 <br/>
 
@@ -74,7 +74,7 @@ toc: true #옆에 목차
 
 <br/>
 
-# 2021.07.14 사항
+# 2021.07.15 사항
 
 <br/>
 
@@ -82,12 +82,10 @@ toc: true #옆에 목차
 
 <br/>
 
-- [x] `Profile 수정 폼 구현`
-  - post 수정 폼과 같은 update 라우트를 공유하게 함 (라우트를 효율적으로 쓰기 위해서)
-    - 수정 버튼 클릭시 updateSelector로 값을 보내어 update 라우트에서 post인지, profile인지 구분함
-  - [x] user displayName, photoURL만 변경시킬수 있게 해놓았음
-  - [ ] user profile info도 구현 필요
-    - firebase의 경우 displayName과 photoURL만 지원하기 때문에 다른 사항을 넣으려면 데이터 베이스를 짜야함
+- profile 이미지 url 삭제에 관한 에러 처리 문제 해결
+  - 특정 작업에서의 에러에 대해서만 무시하고 다른 작업을 수행하는 것을 구현하고 싶었음
+    - 그냥, 따로 action을 만들어서 error를 처리받고 updateProfile에서는 try에 넣지 않음으로서 이미지 삭제 에러가 발생해도 실패만 redux로 뜨고, 나머지는 진행하게됨
+    - 즉, 해당 작업만 따로 구현하여 에러 처리를 하여 redux로 상태를 볼수 있게 하고, 호출하는 함수에서는 try에서 제외 시키면 됨
 
 <br/>
 
@@ -95,31 +93,16 @@ toc: true #옆에 목차
 
 <br/>
 
-### 고민
+### 생각
 
 <br/>
 
-- 소셜 로그인시 받아오는 프로필 사진의 url 처리 문제
-  - 프로필 사진 변경시 firebase Storage에 파일을 올리고 url을 가져오는 방식인데, 프로필 사진 변경시 기존의 storage로 들어간 이미지 파일을 제거해야함
-  - `문제` : 소셜 로그인시 받아오는 프로필 사진의 url은 storage에 올라가지 않기 때문에, **단순히 전 프로필 url을 storage에서 지운다고 하면, 소셜 로그인시 받아오는 url인 경우에는 storage에 없기 때문에 error를 일으킴**
-  - 생각해 볼수 있는 방안
-    - 생각01: 애초에 소셜 로그인 프로필을 받지 않는다.
-    - 생각02: 소셜 로그인으로 처음 가입하여 들어가는 경우에, 해당 프로필 이미지를 storage에 넣는다. (처음 가입하는 때를 찾기가 힘듦)
-    - 생각03: 소셜 로그인 프로필의 url을 storage에서 찾아서 없으면 지우기를 넘어감
-      - url의 존재를 보려면, 결국엔 error로 확인 가능함
-      - 에러 처리시 존재하지 않는 에러코드일 경우 그냥 넘어가고, 그외의 에러는 받아서 위로 올려서 에러 반환시켜야 함 (try-catch를 한번더 씀으로)
-    - 3번 방안이 제일 유력함
-
-<br/>
-
-### 깨달음
-
-<br/>
-
-- 오늘은 여러 조건에서 방어코드로 빨리 빠져나오게 하는 처리를 하면서 논리연산자에 대한 조건 설정에 대한 깨달음을 얻음
-- 프로그래밍을 만드는 설계법과 디자인 패턴에 대해서 공부할 필요가 있음을 느낌
-- TEST 코드 짤 생각에 아득함, 진작에 TEST 코드 위주의 개발을 했어야 했음을 느낌
-  - 일단, 개발하고 나중에 TEST 코드 짜면서 힘든걸 경험해보고 TDD의 절실함을 깨달아야 할듯 하다. 마음은 TEST 코드 짜라고 하지만, 개발이 너무 길어질 것 같음
+- 나중에, User에 대한 정보를 firebase database에 만들어서 관리해야함
+  - 현재는 post에 userPhotoUrl, displayName이 존재하여 모든 글을 찾아서 업데이트하기란 성능에 좋지 않음
+  - post의 userId 만 가지고 데이터베이스의 유저정보를 가져와서 글상자의 상단을 구성하면 굳이 글을 모두 update할 필요가 없음
+- **결국에는 firebase의 currentUser의 photoUrl, displayName은 한계가 있으므로 User를 관리하는 데이터베이스가 필요함**
+  - User 데이터 베이스 구성하고 User 데이터 베이스 중심의 profile update 및 가입시 User데이터 지정 작업을 구현해야함
+  - 로그인시 제공하는 uid를 가지고 User 데이터를 활용하도록 개편이 필요함
 
 <br/>
 

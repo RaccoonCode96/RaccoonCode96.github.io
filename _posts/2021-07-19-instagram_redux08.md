@@ -1,12 +1,12 @@
 ---
-title: "20210714 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit06 : 프로필 수정 구현, profile 이미지 url 처리에 관한 문제 발생과 고민" #제목
+title: "20210719 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit08 : 전체적인 redux state 관리 구조 개편, common slice 생성" #제목
 category: #카테고리
 tag: #태그
   - project
 toc: true #옆에 목차
 ---
 
-> # 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit06
+> # 리팩토링 Instagram 클론 프로젝트 by Redux-toolkit08
 
 <br/>
 
@@ -74,7 +74,7 @@ toc: true #옆에 목차
 
 <br/>
 
-# 2021.07.14 사항
+# 2021.07.19 사항
 
 <br/>
 
@@ -82,12 +82,101 @@ toc: true #옆에 목차
 
 <br/>
 
-- [x] `Profile 수정 폼 구현`
-  - post 수정 폼과 같은 update 라우트를 공유하게 함 (라우트를 효율적으로 쓰기 위해서)
-    - 수정 버튼 클릭시 updateSelector로 값을 보내어 update 라우트에서 post인지, profile인지 구분함
-  - [x] user displayName, photoURL만 변경시킬수 있게 해놓았음
-  - [ ] user profile info도 구현 필요
-    - firebase의 경우 displayName과 photoURL만 지원하기 때문에 다른 사항을 넣으려면 데이터 베이스를 짜야함
+- 전체적인 redux 상태 관리 구조 개편
+  - 공통적으로 사용되는 것은 common state에서 관리
+    - imageUrl을 가져오고 제거하는 thunk 관리
+    - updateSelector 관리 (update시 profile인지 post인지 구분하는 값)
+  - init, auth, post, profile, common 으로 구조 개편
+  - 기존 init의 currentUser -> profile에서 관리
+- 상태 관리 구조 개편에 따른 전체적인 참조 수정 작업
+
+```js
+state = {
+  init: {
+    isInit: false,
+  },
+  auth: {
+    newAccount: false,
+    errorSelector: "",
+    emailSignUp: {
+      isSignUp: false,
+      loading: false,
+      signUpError: "",
+    },
+    emailSignIn: {
+      isSignIn: false,
+      loading: false,
+      signInError: "",
+    },
+    socialSignIn: {
+      isSignIn: false,
+      loading: false,
+      signInError: "",
+    },
+  },
+  post: {
+    postList: [],
+    postSelector: "",
+    updatePost: {
+      isUpdate: false,
+      loading: false,
+      updateError: "",
+    },
+    deletePost: {
+      isDelete: false,
+      loading: false,
+      deleteError: "",
+    },
+    getPostList: {
+      isGet: false,
+      loading: false,
+      getError: "",
+    },
+    setPostObj: {
+      isSet: false,
+      loading: false,
+      setError: "",
+    },
+  },
+  profile: {
+    updateProfile: {
+      loading: false,
+      isUpdate: false,
+      updateError: "",
+    },
+    currentUser: {
+      isSignIn: false,
+      photoURL: "",
+      displayName: "",
+      uid: "",
+    },
+    updateDisplayName: {
+      isUpdate: false,
+      loading: false,
+      updateError: "",
+    },
+    updatePhotoUrl: {
+      isUpdate: false,
+      loading: false,
+      updateError: "",
+    },
+  },
+  common: {
+    updateSelector: "",
+    getImageUrl: {
+      isGet: false,
+      loading: false,
+      getError: "",
+      imageUrl: "",
+    },
+    deleteImageUrl: {
+      loading: false,
+      isDelete: false,
+      deleteError: "",
+    },
+  },
+};
+```
 
 <br/>
 
@@ -95,31 +184,9 @@ toc: true #옆에 목차
 
 <br/>
 
-### 고민
-
-<br/>
-
-- 소셜 로그인시 받아오는 프로필 사진의 url 처리 문제
-  - 프로필 사진 변경시 firebase Storage에 파일을 올리고 url을 가져오는 방식인데, 프로필 사진 변경시 기존의 storage로 들어간 이미지 파일을 제거해야함
-  - `문제` : 소셜 로그인시 받아오는 프로필 사진의 url은 storage에 올라가지 않기 때문에, **단순히 전 프로필 url을 storage에서 지운다고 하면, 소셜 로그인시 받아오는 url인 경우에는 storage에 없기 때문에 error를 일으킴**
-  - 생각해 볼수 있는 방안
-    - 생각01: 애초에 소셜 로그인 프로필을 받지 않는다.
-    - 생각02: 소셜 로그인으로 처음 가입하여 들어가는 경우에, 해당 프로필 이미지를 storage에 넣는다. (처음 가입하는 때를 찾기가 힘듦)
-    - 생각03: 소셜 로그인 프로필의 url을 storage에서 찾아서 없으면 지우기를 넘어감
-      - url의 존재를 보려면, 결국엔 error로 확인 가능함
-      - 에러 처리시 존재하지 않는 에러코드일 경우 그냥 넘어가고, 그외의 에러는 받아서 위로 올려서 에러 반환시켜야 함 (try-catch를 한번더 씀으로)
-    - 3번 방안이 제일 유력함
-
-<br/>
-
-### 깨달음
-
-<br/>
-
-- 오늘은 여러 조건에서 방어코드로 빨리 빠져나오게 하는 처리를 하면서 논리연산자에 대한 조건 설정에 대한 깨달음을 얻음
-- 프로그래밍을 만드는 설계법과 디자인 패턴에 대해서 공부할 필요가 있음을 느낌
-- TEST 코드 짤 생각에 아득함, 진작에 TEST 코드 위주의 개발을 했어야 했음을 느낌
-  - 일단, 개발하고 나중에 TEST 코드 짜면서 힘든걸 경험해보고 TDD의 절실함을 깨달아야 할듯 하다. 마음은 TEST 코드 짜라고 하지만, 개발이 너무 길어질 것 같음
+- user의 displayName, photoUrl만 관리할 수 있는 **firebase의 한계 발생**으로 userInfo를 관리하는 users database 필요성을 깨달음
+- 다른 유저의 페이지에 들어가 profile을 확인하는 구조를 구현하려면, users database가 필요함
+- 비동기 작업에 대한 이해도가 조금 떨어짐, 더 깊은 공부가 필요함
 
 <br/>
 
@@ -128,8 +195,8 @@ toc: true #옆에 목차
 <br/>
 
 - [ ] user 검사를 실시하여 수정, 삭제 버튼 나타나지 않게 접근 막기
-- [ ] slice 모듈화하여 관리하기, 기능별로 재편성 필요함
-  - [ ] getImageUrl 위치 옮기기 공통 사용 데이터 쪽으로 올려야 함
+- [x] slice 모듈화하여 관리하기, 기능별로 재편성 필요함
+  - [x] getImageUrl 위치 옮기기 공통 사용 데이터 쪽으로 올려야 함
 - [ ] Navigation-profile 눌렀을 때 로그아웃, 프로필 수정, 프로필 이동 드롭 다운 필요
 - [ ] Post에 글 수정 메뉴 버튼을 통한 모달 구현
 - [ ] user profile info도 구현 필요
