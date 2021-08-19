@@ -163,7 +163,7 @@ toc: true #옆에 목차
 <br/>
 <br/>
 
-### **스로틀과 디바운스**
+> ### 스로틀과 디바운스
 
 불필요한 event를 제어하는데는 스로틀(Throttle)과 디바운스(Debounce)를 주로 사용하게 됩니다. 제가 이해한 스로틀과 디바운스를 간단하게 말하자면, 스로틀은 많은 수의 호출을 시간 단위로 그룹화 하고 디바운스는 다수의 호출의 연속성을 체크하여 연속된 호출을 하나로 그룹화 합니다.
 
@@ -187,7 +187,7 @@ toc: true #옆에 목차
 <br/>
 <br/>
 
-### **React 함수형 컴포넌트에서 debounce 활용시 주의점**
+> ### React 함수형 컴포넌트에서 debounce 활용시 주의점
 
 저는 onChange Handler 함수를 이미 만들어 놨었고, 기존에 check 요청을 보내는 check 함수를 debounce를 붙여서 onChange Handler 함수에 적용하였습니다.
 
@@ -242,7 +242,7 @@ export default Test;
 
 <br/>
 
-### **unknown function waring 해결하기**
+> ### unknown function waring 해결하기
 
 대신 이렇게 useCallback 안에서 외부 라이브러리의 함수를 직접적으로 callback으로 사용하는 경우 lint에서 unknown function이니까 inline function을 사용하라고 complie warning을 일으키는데 사용에 대한 문제는 없지만 이러한 경고가 거슬리는 경우 useMemo를 사용하면 해결 가능하다.
 
