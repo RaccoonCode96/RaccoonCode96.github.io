@@ -130,12 +130,12 @@ const useStyles = makeStyles({
 <TextField
   type="text"
   variant="outlined"
-  InputProps={{
+  InputProps={/* {
     className: useStyle({ color: "green" }).input,
-  }}
-  FormHelperTextProps={{
+  } */}
+  FormHelperTextProps={/* {
     className: useStyle({ color: "green" }).helperText,
-  }}
+  } */}
 />;
 ```
 
