@@ -1,0 +1,576 @@
+---
+title: "[Node.js] 백준 문제 풀기(BaeckJoon) - 기본 입출력 문제, if 조건문 문제, for & while 반복문 문제" #제목
+category: #카테고리
+tag: #태그
+  - project
+toc: true #옆에 목차
+---
+
+# 📝 Node.js를 이용해 백준 문제 풀기
+
+<br/>
+
+<p align="center">
+<img src="../assets/img/node.png" width="300px" height="300px" styles="filiter:'#679A67'">
+</p>
+
+<br/>
+
+Node.js를 이용해서 백준 문제를 풀고 있습니다.
+
+<br/>
+
+## Node.js로 문제 푸는 방식
+
+<br/>
+
+<p>
+Node.js로 백준 문제를 푸는 경우 다른 언어에 비해서 입출력을 따로 다루어 주어야 합니다. 백준 문제의 경우 성능도 다루기 때문에 많은 사람들이 Node.js의 fs 파일 시스템 모듈을 활용하여 입력을 받고 출력하여 문제를 제출하게 됩니다. fs로 간혹 안되는 부분은 readline을 사용해야 합니다.
+</p>
+
+```js
+// fs 방식 입력 받기
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+// input은 각 txt 파일의 row를 string형태의 값을 Array로 가짐
+// row가 1개 또는 여러개 인 경우 input을 신경써야 합니다.
+
+// 출력 결과는 항상 console.log를 통해서 전달합니다.
+```
+
+vscode에서 input.txt 파일을 생성하여, vscode에서 테스트용 코드를 작성할 때는 `"./input.txt"`의 data input을 받아와 테스트를 진행하고 제출 하는 용도인 경우 `"/dev/stdin"`으로 받아오게 됩니다.
+
+<br/>
+<br/>
+<br/>
+
+> ## 기본 입출력 & 산술 문제
+
+<br/>
+
+```js
+// (1) 2557번 Hello World
+console.log("Hello World!");
+
+// (2) 10718번 We love kriii
+console.log("강한친구 대한육군");
+console.log("강한친구 대한육군");
+
+// (3) 10171번 고양이
+console.log("\\    /\\");
+console.log(" )  ( ')");
+console.log("(  /  )");
+console.log(" \\(__)|");
+
+// (4) 10172번 개
+console.log("|\\_/|");
+console.log("|q p|   /}");
+console.log('( 0 )"""\\');
+console.log('|"^"`    |');
+console.log("||_/=\\\\__|");
+
+// (5) 1000번 A+B
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+input = input[0];
+input = input.split(" ").map((item) => +item);
+
+solution(input[0], input[1]);
+
+function solution(A, B) {
+  console.log(A + B);
+}
+
+// (6) 1001번 A-B
+
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+input = input[0];
+input = input.split(" ").map((item) => +item);
+
+solution(input[0], input[1]);
+
+function solution(A, B) {
+  console.log(A - B);
+}
+
+// (7) 10998번 AxB
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1]);
+
+function solution(A, B) {
+  console.log(A * B);
+}
+
+// (8) 1008번 A/B
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1]);
+
+function solution(A, B) {
+  console.log(A / B);
+}
+
+// (9) 10869번 사칙연산
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1]);
+
+function solution(A, B) {
+  console.log(A + B);
+  console.log(A - B);
+  console.log(A * B);
+  console.log(parseInt(A / B));
+  console.log(A % B);
+}
+
+// (10) 10430번 나머지
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1], input1[2]);
+
+function solution(A, B, C) {
+  console.log((A + B) % C);
+  console.log(((A % C) + (B % C)) % C);
+  console.log((A * B) % C);
+  console.log(((A % C) * (B % C)) % C);
+}
+
+// (11) 2588번 곱셈
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+let input2 = input[1];
+
+input1 = input1.split(" ").map((item) => +item);
+input2 = input2.split(" ").map((item) => +item);
+
+solution(input1, input2);
+
+function solution(A, B) {
+  String(B)
+    .split("")
+    .reverse()
+    .forEach((i) => console.log(parseInt(i) * A));
+  console.log(A * B);
+}
+```
+
+<br/>
+<br/>
+<br/>
+
+> ## if 조건문 문제
+
+<br/>
+
+```js
+// if 문 -------------------------------------------------------------
+// (1) 1330번 두 수 비교하기
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1]);
+
+function solution(A, B) {
+  if (A > B) {
+    console.log(">");
+  } else if (A < B) {
+    console.log("<");
+  } else {
+    console.log("==");
+  }
+}
+
+// (2) 9498번 시험 성적
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0]);
+
+function solution(A) {
+  if (90 <= A) {
+    console.log("A");
+  } else if (80 <= A) {
+    console.log("B");
+  } else if (70 <= A) {
+    console.log("C");
+  } else if (60 <= A) {
+    console.log("D");
+  } else {
+    console.log("F");
+  }
+}
+
+// (3) 2753번 윤년
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0]);
+
+function solution(A) {
+  if (A % 4 === 0 && (A % 100 !== 0 || A % 400 === 0)) {
+    console.log(1);
+  } else {
+    console.log(0);
+  }
+}
+
+// (4) 14681번 사분면 고르기
+// fs 모듈 반응 하지 않음
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+let input = [];
+
+function solution(A, B) {
+  if (A > 0 && B > 0) {
+    console.log(1);
+  } else if (A < 0 && B > 0) {
+    console.log(2);
+  } else if (A < 0 && B < 0) {
+    console.log(3);
+  } else if (A > 0 && B < 0) {
+    console.log(4);
+  }
+}
+
+rl.on("line", function (line) {
+  input.push(line);
+}).on("close", function () {
+  solution(input[0], input[1]);
+  process.exit();
+});
+
+// (5) 2884번 알람시계
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().trim().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0], input1[1]);
+
+function solution(A, B) {
+  if (B >= 45) {
+    console.log(A, B - 45);
+  } else {
+    console.log(A === 0 ? 23 : A - 1, 60 - Math.abs(B - 45));
+  }
+}
+```
+
+<br/>
+<br/>
+<br/>
+
+> ## for & while 문제
+
+<br/>
+
+```js
+// For 문 -----------------------------------------
+// (1) 구구단
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().trim().split("\n");
+
+let input1 = input[0];
+
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0]);
+
+function solution(A) {
+  for (let i = 1; i <= 9; i++) {
+    console.log(`${A} * ${i} = ${A * i}`);
+  }
+}
+
+// (2) A+B - 3
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+for (let i = 0; i <= input.length - 1; i++) {
+  let input1 = input[i];
+  input1 = input1.split(" ").map((item) => +item);
+  if (input1.length <= 1) {
+    continue;
+  }
+  solution(input1[0], input1[1]);
+}
+
+function solution(A, B) {
+  console.log(A + B);
+}
+
+// (3) 합
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let input1 = input[0];
+input1 = input1.split(" ").map((item) => +item);
+
+solution(input1[0]);
+
+function solution(A) {
+  let sum = 0;
+  for (let i = 1; i <= A; i++) {
+    sum += i;
+  }
+  console.log(sum);
+}
+
+// (4) 빠른 A + B
+// 함수를 호출하는 횟수가 많아지면, 느려지므로 최대한 자료를 조합하여 한번에 출력할 수 있도록 함
+// 1348ms
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+for (let i = 0; i <= input.length - 1; i++) {
+  let input1 = input[i];
+  input1 = input1.split(" ");
+  if (input1.length <= 1) {
+    continue;
+  }
+  answer += Number(input1[0]) + Number(input1[1]) + "\n";
+}
+
+console.log(answer);
+
+// (5) N 찍기
+// 천만개 (10,000,000) 기준 5179ms
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+for (let i = 1; i <= input[0]; i++) {
+  answer += i + "\n";
+}
+
+console.log(answer);
+
+// (6) 기찍 N
+// 천만개 (10,000,000) 기준 5545ms
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+for (let i = 0; i < input[0]; i++) {
+  answer += input[0] - i + "\n";
+}
+
+console.log(answer);
+
+// (7) A+B - 7
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+let count = 0;
+
+for (let i = 0; i <= input.length - 1; i++) {
+  let row = input[i].split(" ");
+  if (row.length <= 1) {
+    continue;
+  } else {
+    count += 1;
+  }
+  answer += `Case #${count}: ${Number(row[0]) + Number(row[1])}\n`;
+}
+
+console.log(answer);
+
+// (8) A + B - 8
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+let count = 0;
+
+for (let i = 0; i <= input.length - 1; i++) {
+  let row = input[i].split(" ");
+  if (row.length <= 1) {
+    continue;
+  } else {
+    count += 1;
+  }
+  answer += `Case #${count}: ${row[0]} + ${row[1]} = ${
+    Number(row[0]) + Number(row[1])
+  }\n`;
+}
+
+console.log(answer);
+
+// (9) 별 찍기 - 1
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+const input1 = Number(input[0]);
+for (let i = 1; i <= input1; i++) {
+  answer += "*".repeat(i) + "\n";
+}
+
+console.log(answer);
+
+// (10) 별 찍기 - 2
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+const input1 = Number(input[0]);
+for (let i = 1; i <= input1; i++) {
+  answer += " ".repeat(input1 - i) + "*".repeat(i) + "\n";
+}
+
+console.log(answer);
+
+// (11) X보다 작은 수
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+
+const input1 = input[0].split(" ");
+const input2 = input[1].split(" ");
+
+for (let i = 0; i < Number(input1[0]); i++) {
+  if (Number(input2[i]) < input1[1]) {
+    answer += `${input2[i]} `;
+  }
+}
+
+console.log(answer);
+
+// while ----------------------------------------------
+// (1) A + B - 5
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+let count = 0;
+while (count < input.length) {
+  const row = input[count];
+  const items = row.split(" ");
+  if (!(Number(items[0]) + Number(items[1]))) {
+    count++;
+    continue;
+  }
+  answer += `${Number(items[0]) + Number(items[1])}\n`;
+  count++;
+}
+
+console.log(answer);
+
+// (2) A + B - 4
+// 정수인 입력값만 연산하여 출력해야 합니다.
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let answer = "";
+let count = 0;
+while (count < input.length) {
+  const row = input[count];
+  const items = row.split(" ");
+  if (Number(items[0]) % 1 !== 0 || Number(items[1]) % 1 !== 0) {
+    count++;
+    continue;
+  }
+
+  answer += `${parseInt(items[0]) + parseInt(items[1])}\n`;
+
+  count++;
+}
+
+console.log(answer);
+
+// (3) 더하기 사이클
+// 숫자 앞에 0 붙이는 것은 05, 08 이런식을 이야기 함
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "./input.txt";
+let input = fs.readFileSync(filePath).toString().split("\n");
+
+let count = 0;
+let prevNum = Number(input[0]);
+let num = Number(input[0]);
+
+while (true) {
+  const ten = parseInt(num / 10);
+  const one = num % 10;
+  const afterOne = (ten + one) % 10;
+  num = one * 10 + afterOne;
+  count++;
+  if (prevNum === num) {
+    break;
+  }
+}
+
+console.log(count);
+```
